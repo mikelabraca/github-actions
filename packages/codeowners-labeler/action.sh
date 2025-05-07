@@ -27,6 +27,9 @@ if [ -f "$CODEOWNERS_PATH" ]; then
     pattern=$(echo "$line" | awk '{print $1}')
     owners=$(echo "$line" | sed 's/^[^ ]* //')
 
+    # Remove leading slash from pattern if exists
+    pattern="${pattern#/}"
+
     echo "pattern=$pattern"
     echo "owners=$owners"
 
