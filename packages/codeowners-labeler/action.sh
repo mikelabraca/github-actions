@@ -5,7 +5,6 @@ set -e
 # env vars
 # GITHUB_TOKEN
 CODEOWNERS_PATH="${CODEOWNERS_PATH}"
-echo "CODEOWNERS_PATH=$CODEOWNERS_PATH"
 
 # Get the PR number and repo
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
@@ -37,6 +36,6 @@ if [ -f "$CODEOWNERS_PATH" ]; then
     done
   done < "$CODEOWNERS_PATH"
 else
-  echo "No CODEOWNERS file found in the repository."
+  echo "No CODEOWNERS file found at path: [$CODEOWNERS_PATH]"
   exit 1
 fi
