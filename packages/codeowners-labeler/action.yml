@@ -5,6 +5,9 @@ inputs:
   github_token:
     description: 'GitHub token to interact with GitHub API'
     required: true
+  codeowners_path:
+    description: 'The CODEOWNERS file path'
+    required: true
 runs:
   using: "composite"
   steps: 
