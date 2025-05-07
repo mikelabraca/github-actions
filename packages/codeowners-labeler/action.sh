@@ -3,7 +3,10 @@
 set -e
 
 # GitHub token passed as input
-GITHUB_TOKEN=$1
+# GITHUB_TOKEN=$1
+
+# Authenticate with GitHub CLI using the GITHUB_TOKEN
+echo "$GITHUB_TOKEN" | gh auth login --with-token
 
 # Get the PR number and repo
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
