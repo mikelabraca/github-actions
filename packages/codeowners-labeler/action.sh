@@ -9,11 +9,14 @@ REPO=$(jq --raw-output .repository.full_name "$GITHUB_EVENT_PATH")
 echo "PR_NUMBER=$PR_NUMBER"
 echo "REPO=$REPO"
 
+# Authenticate GitHub CLI with the provided GITHUB_TOKEN
+echo "$GITHUB_TOKEN" | gh auth login --with-token
+
 # Get the list of files changed in the PR
-# PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].filename")
+PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].filename")
 # Get the list of files changed in the PR using git diff
-git fetch origin pull/$PR_NUMBER/head:pr-branch
-PR_FILES=$(git diff --name-only origin/main..pr-branch)
+# git fetch origin pull/$PR_NUMBER/head:pr-branch
+# PR_FILES=$(git diff --name-only origin/main..pr-branch)
 
 # Debugging: Check what files are returned by gh pr view
 echo "PR_FILES=$PR_FILES"
