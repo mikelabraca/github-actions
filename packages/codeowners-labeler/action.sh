@@ -11,9 +11,6 @@ echo "REPO=$REPO"
 
 # Get the list of files changed in the PR
 PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].path")
-# Get the list of files changed in the PR using git diff
-# git fetch origin pull/$PR_NUMBER/head:pr-branch
-# PR_FILES=$(git diff --name-only origin/main..pr-branch)
 
 # Debugging: Check what files are returned by gh pr view
 echo "PR_FILES=$PR_FILES"
@@ -29,6 +26,9 @@ if [ -f "$CODEOWNERS_PATH" ]; then
     # Split the line into pattern and owners
     pattern=$(echo "$line" | awk '{print $1}')
     owners=$(echo "$line" | sed 's/^[^ ]* //')
+
+    echo "pattern=$pattern"
+    echo "owners=$owners"
 
     echo "Start checking changes..."
     echo "   Files=$PR_FILES"
