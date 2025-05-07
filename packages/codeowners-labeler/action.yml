@@ -6,5 +6,7 @@ inputs:
     description: 'GitHub token to interact with GitHub API'
     required: true
 runs:
-  using: 'bash'
-  main: './script.sh'
+  using: "composite"
+  steps: 
+    - run: ${{ github.action_path }}/action.sh
+      shell: bash
