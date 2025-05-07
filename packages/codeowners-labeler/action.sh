@@ -10,7 +10,7 @@ REPO=$(jq --raw-output .repository.full_name "$GITHUB_EVENT_PATH")
 PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].filename")
 
 # Path to the CODEOWNERS file
-CODEOWNERS_PATH="CODEOWNERS"
+CODEOWNERS_PATH=".github/CODEOWNERS"
 
 # If CODEOWNERS file exists, read it
 if [ -f "$CODEOWNERS_PATH" ]; then
