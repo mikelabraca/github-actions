@@ -2,10 +2,6 @@
 
 set -e
 
-# env vars
-# GITHUB_TOKEN
-CODEOWNERS_PATH="${CODEOWNERS_PATH}"
-
 # Get the PR number and repo
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 REPO=$(jq --raw-output .repository.full_name "$GITHUB_EVENT_PATH")
