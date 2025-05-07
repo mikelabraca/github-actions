@@ -2,15 +2,16 @@
 
 set -e
 
+# env vars
+# GITHUB_TOKEN
+# CODEOWNERS_PATH
+
 # Get the PR number and repo
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 REPO=$(jq --raw-output .repository.full_name "$GITHUB_EVENT_PATH")
 
 # Get the list of files changed in the PR
 PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].filename")
-
-# Path to the CODEOWNERS file
-CODEOWNERS_PATH=".github/CODEOWNERS"
 
 # If CODEOWNERS file exists, read it
 if [ -f "$CODEOWNERS_PATH" ]; then
