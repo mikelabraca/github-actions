@@ -43,7 +43,7 @@ if [ -f "$CODEOWNERS_PATH" ]; then
         # Add the labels for the matching pattern
         for owner in $owners; do
           echo "Adding owner=$owner for file: $file"
-          gh pr label $PR_NUMBER --add "$owner" --repo "$REPO" --token "$GITHUB_TOKEN"
+          gh pr edit $PR_NUMBER --add-label "$owner"
         done
       fi
     done
