@@ -27,9 +27,11 @@ if [ -f "$CODEOWNERS_PATH" ]; then
 
     # Check if any PR file matches the pattern
     for file in $PR_FILES; do
+      echo "Checking owner of file: $file"
       if [[ "$file" =~ $pattern ]]; then
         # Add the labels for the matching pattern
         for owner in $owners; do
+          echo "Adding owner=$owner for file: $file"
           gh pr label $PR_NUMBER --add "$owner" --repo "$REPO" --token "$GITHUB_TOKEN"
         done
       fi
