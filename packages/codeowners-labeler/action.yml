@@ -11,4 +11,4 @@ runs:
     - run: ${{ github.action_path }}/action.sh
       shell: bash
       env:
-        GITHUB_TOKEN: ${{ inputs.approvals }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
