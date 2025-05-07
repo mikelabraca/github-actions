@@ -25,6 +25,8 @@ if [ -f "$CODEOWNERS_PATH" ]; then
     pattern=$(echo "$line" | awk '{print $1}')
     owners=$(echo "$line" | sed 's/^[^ ]* //')
 
+    echo "Start checking changes..."
+
     # Check if any PR file matches the pattern
     for file in $PR_FILES; do
       echo "Checking owner of file: $file"
