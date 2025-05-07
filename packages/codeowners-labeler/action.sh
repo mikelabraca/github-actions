@@ -6,8 +6,14 @@ set -e
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 REPO=$(jq --raw-output .repository.full_name "$GITHUB_EVENT_PATH")
 
+echo "PR_NUMBER=$PR_NUMBER"
+echo "REPO=$REPO"
+
 # Get the list of files changed in the PR
 PR_FILES=$(gh pr view $PR_NUMBER --json files -q ".files[].filename")
+
+# Debugging: Check what files are returned by gh pr view
+echo "PR_FILES=$PR_FILES"
 
 # If CODEOWNERS file exists, read it
 if [ -f "$CODEOWNERS_PATH" ]; then
