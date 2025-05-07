@@ -4,6 +4,7 @@ set -e
 
 # env vars
 # GITHUB_TOKEN
+CODEOWNERS_PATH="${CODEOWNERS_PATH}"
 echo "CODEOWNERS_PATH=$CODEOWNERS_PATH"
 
 # Get the PR number and repo
